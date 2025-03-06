@@ -37,13 +37,13 @@ Atualmente, o projeto conta com um **parser funcional** para arquivos `.cub`, pe
 ## 📂 Estrutura do Projeto
 
 cub3D/
-│── assets/              # Texturas e sprites (futuro)
-│── inc/                 # Arquivo de cabeçalho
-│── libft/               # Código-fonte do libft
-│── maps/                # Exemplos de mapas .cub
-│── src/                 # Código-fonte do cub3D
-│── Makefile             # Script de compilação
-│── minilibx-linux.tgz   # Código-fonte da lib MiniLibX
+```│── assets/              # Texturas e sprites (futuro)```
+```│── inc/                 # Arquivo de cabeçalho```
+```│── libft/               # Código-fonte do libft```
+```│── maps/                # Exemplos de mapas .cub```
+```│── src/                 # Código-fonte do cub3D```
+```│── Makefile             # Script de compilação```
+```│── minilibx-linux.tgz   # Código-fonte da lib MiniLibX```
 
 ## 👾 Controles (Futuro)
 
@@ -55,6 +55,4 @@ cub3D/
 
 Este projeto faz parte do currículo da Escola 42, explorando conceitos de parsing e manipulação de arquivos como base para um futuro motor gráfico baseado em Raycasting.
 
-Feito com ❤️ por eliandrosergio
 ### 🚀 Feito com ❤️ por **EliandroSergio** 🎮
-Feito com <kbd>❤️</kbd> por <kbd>EliandroSergio</kbd>
