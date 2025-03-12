@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 12:49:28 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/12 15:20:24 by efaustin         ###   ########.fr       */
+/*   Created: 2024/05/20 19:50:34 by efaustin          #+#    #+#             */
+/*   Updated: 2024/05/20 19:50:35 by efaustin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+char	*ft_strdup(const char *str)
 {
-	t_game	game;
+	char	*ptr;
+	size_t	size;
 
-	if (init_data(&game))
-		cleanup_exit(&game, 1);
-	if (check_args(ac, av, &game))
-		cleanup_exit(&game, 1);
-	if (init_game(&game))
-		cleanup_exit(&game, 1);
-	printf("Inicio do game\n");
-	cleanup_exit(&game, 0);
-	return (0);
+	size = ft_strlen(str) + 1;
+	ptr = (char *) malloc(size * sizeof(char));
+	if (!ptr)
+		return (NULL);
+	ft_strlcpy(ptr, str, size);
+	return ((char *) ptr);
 }

@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 12:49:28 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/12 15:20:24 by efaustin         ###   ########.fr       */
+/*   Created: 2024/05/20 18:01:50 by efaustin          #+#    #+#             */
+/*   Updated: 2024/05/20 18:01:52 by efaustin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+int	ft_strncmp(const char *s1, const char *s2, size_t len)
 {
-	t_game	game;
+	size_t	x;
 
-	if (init_data(&game))
-		cleanup_exit(&game, 1);
-	if (check_args(ac, av, &game))
-		cleanup_exit(&game, 1);
-	if (init_game(&game))
-		cleanup_exit(&game, 1);
-	printf("Inicio do game\n");
-	cleanup_exit(&game, 0);
+	x = 0;
+	while (x < len && (*s1 != '\0' || *s2 != '\0'))
+	{
+		if (*s1 != *s2)
+			return ((int)(unsigned char)*s1 - (int)(unsigned char)*s2);
+		s1++;
+		s2++;
+		x++;
+	}
 	return (0);
 }

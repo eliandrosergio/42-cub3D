@@ -6,7 +6,7 @@
 /*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:47:54 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/12 12:47:55 by efaustin         ###   ########.fr       */
+/*   Updated: 2025/03/12 15:20:24 by efaustin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,24 @@ static void	define_player_help(t_game *game, char dir)
 {
 	if (dir == 'S')
 	{
-		game->player.dirX = 0.0;
-		game->player.dirY = 1.0;
-		game->player.planeX = 0.66;
-		game->player.planeY = 0.0;
+		game->player.dir_x = 0.0;
+		game->player.dir_y = 1.0;
+		game->player.plane_x = 0.66;
+		game->player.plane_y = 0.0;
 	}
 	else if (dir == 'E')
 	{
-		game->player.dirX = 1.0;
-		game->player.dirY = 0.0;
-		game->player.planeX = 0.0;
-		game->player.planeY = -0.66;
+		game->player.dir_x = 1.0;
+		game->player.dir_y = 0.0;
+		game->player.plane_x = 0.0;
+		game->player.plane_y = -0.66;
 	}
 	else if (dir == 'W')
 	{
-		game->player.dirX = -1.0;
-		game->player.dirY = 0.0;
-		game->player.planeX = 0.0;
-		game->player.planeY = 0.66;
+		game->player.dir_x = -1.0;
+		game->player.dir_y = 0.0;
+		game->player.plane_x = 0.0;
+		game->player.plane_y = 0.66;
 	}
 	return ;
 }
@@ -45,15 +45,15 @@ static int	define_player_position(t_game *game, int y, int x, char dir)
 				" no mapa\n", 0, 0, 0));
 	if (dir == 'N')
 	{
-		game->player.dirX = 0.0;
-		game->player.dirY = -1.0;
-		game->player.planeX = -0.66;
-		game->player.planeY = 0.0;
+		game->player.dir_x = 0.0;
+		game->player.dir_y = -1.0;
+		game->player.plane_x = -0.66;
+		game->player.plane_y = 0.0;
 	}
 	else
 		define_player_help(game, dir);
-	game->player.posY = (double)(y + 0.5);
-	game->player.posX = (double)(x + 0.5);
+	game->player.pos_y = (double)(y + 0.5);
+	game->player.pos_x = (double)(x + 0.5);
 	game->map.grid[y][x] = '0';
 	game->player.dir = 1;
 	return (0);
