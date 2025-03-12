@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/12 12:49:38 by efaustin          #+#    #+#             */
+/*   Updated: 2025/03/12 12:49:40 by efaustin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -115,6 +127,7 @@ int     check_map_chars(t_game *game, char *line, int y);
 // init
 int     init_data(t_game *game);
 char    **allocate_grid(int width, int height);
+int	    load_texture(t_game *game, char tex_dir);
 
 // parser
 int     get_line_file(t_game *game);

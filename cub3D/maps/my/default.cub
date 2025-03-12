@@ -1,7 +1,7 @@
-NO textures/greystone.xpm
-SO textures/purplestone.xpm
-WE textures/redbrick.xpm
-EA textures/bluestone.xpm
+NO ./assets/greystone.xpm
+SO ./assets/purplestone.xpm
+WE ./assets/redbrick.xpm
+EA ./assets/bluestone.xpm
 
 F 220,100,0
 C 225,30,0

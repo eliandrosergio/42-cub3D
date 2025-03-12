@@ -1,8 +1,8 @@
 
-SO ./textures/south.xpm
-WE ./textures/west.xpm
-EA ./textures/east.xpm
-NO ./textures/north.xpm
+SO ./assets/south.xpm
+WE ./assets/west.xpm
+EA ./assets/east.xpm
+NO ./assets/north.xpm
 
 
 C 0 , 244 , 255

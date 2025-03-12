@@ -1,19 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/12 12:49:20 by efaustin          #+#    #+#             */
+/*   Updated: 2025/03/12 12:49:22 by efaustin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-void    print_erro(char *str)
+void	print_erro(char *str)
 {
-    printf("Error\n%s", str);
-    return ;
+	printf("Error\n%s", str);
+	return ;
 }
 
-int     is_num(char val)
+int	is_num(char val)
 {
 	if (val >= '0' && val <= '9')
 		return (1);
 	return (0);
 }
 
-int     ft_strchr_int(const char *s, int c)
+int	ft_strchr_int(const char *s, int c)
 {
 	char	find_c;
 
@@ -27,14 +39,14 @@ int     ft_strchr_int(const char *s, int c)
 	return (0);
 }
 
-int		return_erro(char *str1, char *str2, char *str3, char *line)
+int	return_erro(char *str1, char *str2, char *str3, char *line)
 {
-    print_erro(str1);
-    if (str2)
-        printf("%s", str2);
-    if (str3)
-        printf("%s", str3);
-    if (line)
+	print_erro(str1);
+	if (str2)
+		printf("%s", str2);
+	if (str3)
+		printf("%s", str3);
+	if (line)
 		free(line);
-    return (1);
+	return (1);
 }

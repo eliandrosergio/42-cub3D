@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_grid.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/12 12:47:46 by efaustin          #+#    #+#             */
+/*   Updated: 2025/03/12 12:47:48 by efaustin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static int	border_erro(char *str1, int x, char *str2, int y)
@@ -15,11 +27,11 @@ static int	border_erro(char *str1, int x, char *str2, int y)
 
 static int	check_border_h(t_game *game, int y)
 {
-    int     end;
-    int     start;
+	int		end;
+	int		start;
 	char	*str;
 
-    end = 0;
+	end = 0;
 	start = get_start_line(game, y);
 	if (y == 0)
 		str = "Borda superior inválida na linha ";
@@ -46,11 +58,11 @@ static int	check_char_border(char **grid, int y, int x, int last_line)
 	if (y != 0)
 		if (grid[y - 1][x] != 'V' && grid[y - 1][x] != '1')
 			return (border_erro("Borda superior inválida do caractere ",
-				x, " da linha ", y));
+					x, " da linha ", y));
 	if (y != last_line)
 		if (grid[y + 1][x] != 'V' && grid[y + 1][x] != '1')
 			return (border_erro("Borda inferior inválida do caractere ",
-				x, " da linha ", y));
+					x, " da linha ", y));
 	if (grid[y][x + 1] != 'V' && grid[y][x + 1] != '1')
 		return (border_erro("Borda direita inválida do caractere ",
 				x, " da linha ", y));
@@ -88,7 +100,7 @@ static int	check_in_grid(t_game *game, int last_line)
 	return (status);
 }
 
-int     chekc_map_grid(t_game *game)
+int	chekc_map_grid(t_game *game)
 {
 	int		last_line;
 
