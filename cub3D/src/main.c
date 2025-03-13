@@ -22,6 +22,8 @@ int	main(int ac, char **av)
 		cleanup_exit(&game, 1);
 	if (init_game(&game))
 		cleanup_exit(&game, 1);
+	start_game(&game);
+	mlx_loop(game.mlx);
 	printf("Inicio do game\n");
 	cleanup_exit(&game, 0);
 	return (0);

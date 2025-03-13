@@ -122,6 +122,9 @@ int		check_param_lines(t_game *game, char *line);
 int		check_args(int ac, char **av, t_game *game);
 int		check_map_chars(t_game *game, char *line, int y);
 
+// gameplay
+void	start_game(t_game *game);
+
 // init
 int		init_data(t_game *game);
 int		init_game(t_game *game);
@@ -138,6 +141,7 @@ int		fill_map(t_game *game, char *line, int *fd, int *i);
 int		is_num(char val);
 void	print_erro(char *str);
 int		rgb_to_hex(char *line);
+int		exit_game(t_game *game);
 int		check_colorcode(char *line);
 int		ft_strchr_int(const char *s, int c);
 void	cleanup_exit(t_game *game, int exitcode);
