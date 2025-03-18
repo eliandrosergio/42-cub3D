@@ -34,9 +34,9 @@ static int	check_border_h(t_game *game, int y)
 	end = 0;
 	start = get_start_line(game, y);
 	if (y == 0)
-		str = "Borda superior inválida na linha ";
+		str = "Borda superior inválida";
 	else
-		str = "Borda inferior inválida na linha ";
+		str = "Borda inferior inválida";
 	if (start < 0)
 		return (border_erro(str, -1, 0, -y));
 	end = get_end_line(game, y);
@@ -44,12 +44,12 @@ static int	check_border_h(t_game *game, int y)
 		return (border_erro(str, -1, 0, y));
 	while (start < end)
 	{
-		if (game->map.grid[y][start] != '1')
+		if (game->map.grid[y][start] == '0')
 			break ;
 		start++;
 	}
 	if (start != end)
-		return (border_erro(str, y, 0, -1));
+		return (border_erro(str, -1, 0, -1));
 	return (0);
 }
 

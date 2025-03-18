@@ -38,7 +38,7 @@ int	rgb_to_hex(char *line)
 	int		rgb[3];
 
 	i = 0;
-	j = -1;
+	j = 0;
 	if (check_colorcode(line))
 		return (0);
 	while (i < 3)

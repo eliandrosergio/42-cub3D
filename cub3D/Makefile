@@ -35,6 +35,7 @@ SRC_FILES	=	$(SRC_PATH)main.c \
 				$(SRC_PATH)check/check_map.c \
 				$(SRC_PATH)check/check_tex_clr.c \
 				$(SRC_PATH)check/check_utils.c \
+				$(SRC_PATH)gameplay/gameplay.c \
 				$(SRC_PATH)init/init_utils.c \
 				$(SRC_PATH)init/init.c \
 				$(SRC_PATH)parser/parser_2.c \
