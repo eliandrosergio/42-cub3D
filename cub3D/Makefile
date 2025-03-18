@@ -6,7 +6,7 @@
 #    By: efaustin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/12 12:49:44 by efaustin          #+#    #+#              #
-#    Updated: 2025/03/12 15:23:32 by efaustin         ###   ########.fr        #
+#    Updated: 2025/03/12 12:49:45 by efaustin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,9 @@ SRC_FILES	=	$(SRC_PATH)main.c \
 				$(SRC_PATH)parser/parser_2.c \
 				$(SRC_PATH)parser/parser_utils.c \
 				$(SRC_PATH)parser/parser.c \
+				$(SRC_PATH)render/ceiling_floor.c \
+				$(SRC_PATH)render/draw_raycasting.c \
+				$(SRC_PATH)render/raycasting.c \
 				$(SRC_PATH)utils/cleanup.c \
 				$(SRC_PATH)utils/color.c \
 				$(SRC_PATH)utils/utils.c
