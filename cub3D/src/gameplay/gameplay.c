@@ -72,6 +72,8 @@ static int	movement_player(t_game *game)
 static int	gameplay(t_game *game)
 {
 	movement_player(game);
+	draw_ceiling_and_floor(game);
+	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 	return (0);
 }
 

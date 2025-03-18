@@ -137,6 +137,9 @@ int		save_file_info(t_game *game);
 char	*trim_spaces(char *line, char *srch);
 int		fill_map(t_game *game, char *line, int *fd, int *i);
 
+// render
+void	draw_ceiling_and_floor(t_game *game);
+
 // utils
 int		is_num(char val);
 void	print_erro(char *str);
