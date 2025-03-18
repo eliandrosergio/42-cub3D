@@ -138,6 +138,8 @@ char	*trim_spaces(char *line, char *srch);
 int		fill_map(t_game *game, char *line, int *fd, int *i);
 
 // render
+void	raycasting(t_game *game);
+void	draw_ray(t_game *game, int x);
 void	draw_ceiling_and_floor(t_game *game);
 
 // utils
