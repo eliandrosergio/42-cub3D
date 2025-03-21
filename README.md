@@ -2,10 +2,6 @@
 
 **cub3D** é um projeto desenvolvido em C que carrega e interpreta arquivos de mapa no formato `.cub`. Este é um passo fundamental para a construção de um jogo inspirado no clássico Wolfenstein 3D.
 
-## 📜 Estado do Projeto
-
-Atualmente, o projeto conta com um **parser funcional** para arquivos `.cub`, permitindo carregar mapas dinamicamente e definir suas dimensões automaticamente.
-
 ## 🚀 Como instalar e executar
 
 1. Clone o repositório:
