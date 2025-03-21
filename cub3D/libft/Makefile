@@ -14,9 +14,12 @@ NAME	=	libft.a
 CC	=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
 
-SRC	= 	ft_bzero.c		\
+SRC	= 	ft_atoi.c		\
+		ft_bzero.c			\
 		ft_calloc.c 		\
+		ft_isdigit.c		\
 		ft_memset.c 		\
+		ft_split.c			\
 		ft_strchr.c 		\
 		ft_strdup.c 		\
 		ft_strjoin.c		\

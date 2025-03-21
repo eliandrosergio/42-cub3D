@@ -6,7 +6,7 @@
 /*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 10:07:29 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/18 10:07:30 by efaustin         ###   ########.fr       */
+/*   Updated: 2025/03/20 20:10:06 by efaustin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,14 @@ static void	init_ray(t_game *game, double camera_x)
 	game->ray.dir_y = game->player.dir_y + game->player.plane_y * camera_x;
 	game->ray.map_x = (int)game->player.pos_x;
 	game->ray.map_y = (int)game->player.pos_y;
+	if (game->ray.dir_x == 0)
+		game->ray.delta_dist_x = 1e30;
+	else
+		game->ray.delta_dist_x = fabs(1 / game->ray.dir_x);
+	if (game->ray.dir_y == 0)
+		game->ray.delta_dist_y = 1e30;
+	else
+		game->ray.delta_dist_y = fabs(1 / game->ray.dir_y);
 	init_ray_helper(game);
 	return ;
 }

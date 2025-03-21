@@ -6,7 +6,7 @@
 /*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:48:16 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/12 15:20:24 by efaustin         ###   ########.fr       */
+/*   Updated: 2025/03/20 21:53:05 by efaustin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ static int	init_assets(t_game *game)
 
 int	init_game(t_game *game)
 {
-	game->player.move_speed = 0.08;
-	game->player.rot_speed = 0.06;
+	game->player.move_speed = 0.008;
+	game->player.rot_speed = 0.006;
 	if (init_assets(game) == 1)
 		return (1);
 	if (init_mlx(game) == 1)
@@ -56,6 +56,8 @@ int	init_game(t_game *game)
 int	init_data(t_game *game)
 {
 	ft_bzero(game, sizeof(t_game));
+	game->map.ceiling = -1;
+	game->map.floor = -1;
 	game->mlx = mlx_init();
 	if (!game->mlx)
 	{

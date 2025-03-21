@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 12:49:38 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/12 15:20:24 by efaustin         ###   ########.fr       */
+/*   Created: 2025/03/13 14:27:55 by efaustin          #+#    #+#             */
+/*   Updated: 2025/03/20 22:07:03 by efaustin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,46 @@ typedef struct s_img
 	int			endian;
 }	t_img;
 
+typedef struct s_wall
+{
+	double		step;
+	double		tex_pos;
+	int			tex_x;
+	int			draw_end;
+	int			draw_start;
+	int			line_height;
+}	t_wall;
+
+typedef struct s_move
+{
+	char		move_v;
+	char		move_h;
+	char		camera;
+}	t_move;
+
+typedef struct s_texture
+{
+	t_img		east;
+	t_img		north;
+	t_img		south;
+	t_img		west;
+}	t_texture;
+
 typedef struct s_ray
 {
 	double		dir_x;
 	double		dir_y;
-	double		side_dist_x;
 	double		side_dist_y;
+	double		side_dist_x;
 	double		delta_dist_x;
 	double		delta_dist_y;
 	double		perp_wall_dist;
 	double		wall_x;
-	int			map_x;
 	int			map_y;
+	int			map_x;
 	int			step_x;
 	int			step_y;
 	int			side;
-	int			tex_num;
 }	t_ray;
 
 typedef struct s_map
@@ -71,13 +95,6 @@ typedef struct s_map
 	char		**grid;
 }	t_map;
 
-typedef struct s_move
-{
-	int			move_v;
-	int			move_h;
-	int			camera;
-}	t_move;
-
 typedef struct s_player
 {
 	int			dir;
@@ -90,14 +107,6 @@ typedef struct s_player
 	double		move_speed;
 	double		rot_speed;
 }	t_player;
-
-typedef struct s_texture
-{
-	t_img		east;
-	t_img		north;
-	t_img		south;
-	t_img		west;
-}	t_texture;
 
 typedef struct s_game
 {
@@ -124,6 +133,7 @@ int		check_map_chars(t_game *game, char *line, int y);
 
 // gameplay
 void	start_game(t_game *game);
+void	key_move(t_game *game, double dir_x, double dir_y, char move_type);
 
 // init
 int		init_data(t_game *game);
@@ -141,13 +151,14 @@ int		fill_map(t_game *game, char *line, int *fd, int *i);
 void	raycasting(t_game *game);
 void	draw_ray(t_game *game, int x);
 void	draw_ceiling_and_floor(t_game *game);
+int		get_pixel_color(t_img *img, int x, int y);
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 // utils
-int		is_num(char val);
+int		is_num(char *str);
 void	print_erro(char *str);
 int		rgb_to_hex(char *line);
 int		exit_game(t_game *game);
-int		check_colorcode(char *line);
 int		ft_strchr_int(const char *s, int c);
 void	cleanup_exit(t_game *game, int exitcode);
 int		return_erro(char *str1, char *str2, char *str3, char *line);

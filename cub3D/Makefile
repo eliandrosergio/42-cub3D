@@ -6,7 +6,7 @@
 #    By: efaustin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/12 12:49:44 by efaustin          #+#    #+#              #
-#    Updated: 2025/03/12 12:49:45 by efaustin         ###   ########.fr        #
+#    Updated: 2025/03/20 21:19:15 by efaustin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,14 +36,15 @@ SRC_FILES	=	$(SRC_PATH)main.c \
 				$(SRC_PATH)check/check_tex_clr.c \
 				$(SRC_PATH)check/check_utils.c \
 				$(SRC_PATH)gameplay/gameplay.c \
+				$(SRC_PATH)gameplay/move.c \
 				$(SRC_PATH)init/init_utils.c \
 				$(SRC_PATH)init/init.c \
 				$(SRC_PATH)parser/parser_2.c \
 				$(SRC_PATH)parser/parser_utils.c \
 				$(SRC_PATH)parser/parser.c \
-				$(SRC_PATH)render/ceiling_floor.c \
 				$(SRC_PATH)render/draw_raycasting.c \
 				$(SRC_PATH)render/raycasting.c \
+				$(SRC_PATH)render/render.c \
 				$(SRC_PATH)utils/cleanup.c \
 				$(SRC_PATH)utils/color.c \
 				$(SRC_PATH)utils/utils.c

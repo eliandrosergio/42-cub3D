@@ -22,6 +22,8 @@
 #  define BUFFER_SIZE 1000
 # endif
 
+int		ft_isdigit(int c);
+int		ft_atoi(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 void	gnl_clean(char **buffer);
@@ -32,6 +34,7 @@ void	*ft_memset(void *b, int c, size_t len);
 char	*ft_strdup(const char *s1);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
+char	**ft_split(char const *s, char c);
 char	*get_next_line(int fd, int cleangnl);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);

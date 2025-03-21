@@ -6,7 +6,7 @@
 /*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:27:55 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/13 14:27:59 by efaustin         ###   ########.fr       */
+/*   Updated: 2025/03/20 22:11:18 by efaustin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ static int	key_press(int key, t_game *game)
 	if (key == KEY_ESQ)
 		exit_game(game);
 	if (key == KEY_W)
-		game->move.move_v = 1;
+		game->move.move_v = 'w';
 	if (key == KEY_S)
-		game->move.move_v = -1;
+		game->move.move_v = 's';
 	if (key == KEY_A)
-		game->move.move_h = 1;
+		game->move.move_h = 'a';
 	if (key == KEY_D)
-		game->move.move_h = -1;
+		game->move.move_h = 'd';
 	if (key == KEY_LEFT)
-		game->move.camera = 1;
+		game->move.camera = 'l';
 	if (key == KEY_RIGHT)
-		game->move.camera = -1;
+		game->move.camera = 'r';
 	return (0);
 }
 
@@ -38,34 +38,34 @@ static int	key_release(int key, t_game *game)
 	if (key == KEY_ESQ)
 		exit_game(game);
 	if (key == KEY_W)
-		game->move.move_v = 0;
+		game->move.move_v = ' ';
 	if (key == KEY_S)
-		game->move.move_v = 0;
+		game->move.move_v = ' ';
 	if (key == KEY_A)
-		game->move.move_h = 0;
+		game->move.move_h = ' ';
 	if (key == KEY_D)
-		game->move.move_h = 0;
+		game->move.move_h = ' ';
 	if (key == KEY_LEFT)
-		game->move.camera = 0;
+		game->move.camera = ' ';
 	if (key == KEY_RIGHT)
-		game->move.camera = 0;
+		game->move.camera = ' ';
 	return (0);
 }
 
 static int	movement_player(t_game *game)
 {
-	if (game->move.move_v == 1)
-		printf("Move para frente\n");
-	else if (game->move.move_v == -1)
-		printf("Move para trás\n");
-	if (game->move.move_h == 1)
-		printf("Move para esquerda\n");
-	else if (game->move.move_h == -1)
-		printf("Move para direita\n");
-	if (game->move.camera == 1)
-		printf("Olha para esquerda\n");
-	else if (game->move.camera == -1)
-		printf("Olha para direita\n");
+	if (game->move.move_v == 'w')
+		key_move(game, game->player.dir_x, game->player.dir_y, 'm');
+	else if (game->move.move_v == 's')
+		key_move(game, -game->player.dir_x, -game->player.dir_y, 'm');
+	if (game->move.move_h == 'a')
+		key_move(game, -game->player.plane_x, -game->player.plane_y, 'm');
+	else if (game->move.move_h == 'd')
+		key_move(game, game->player.plane_x, game->player.plane_y, 'm');
+	if (game->move.camera == 'l')
+		key_move(game, 0, 1, 'r');
+	else if (game->move.camera == 'r')
+		key_move(game, 0, -1, 'r');
 	return (0);
 }
 

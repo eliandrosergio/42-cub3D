@@ -6,7 +6,7 @@
 /*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:48:01 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/12 15:20:24 by efaustin         ###   ########.fr       */
+/*   Updated: 2025/03/20 22:01:01 by efaustin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	check_color(t_game *game, char *line, char c)
 		return (return_erro("Falha ao alocar memória da cor\n", 0, 0, 0));
 	color = rgb_to_hex(line);
 	free(line);
-	if (!color)
+	if (color == -1)
 		return (return_erro("Código da Cor Inválido\n", 0, 0, 0));
 	if (c == 'F')
 		game->map.floor = color;
@@ -75,15 +75,16 @@ int	check_param_lines(t_game *game, char *line)
 		status = check_texture(game, line, 'E');
 	else if (!ft_strncmp("NO ", line, 3))
 		status = check_texture(game, line, 'N');
-	else if (!ft_strncmp("F ", line, 2))
-		status = check_color(game, line, 'F');
 	else if (!ft_strncmp("C ", line, 2))
 		status = check_color(game, line, 'C');
+	else if (!ft_strncmp("F ", line, 2))
+		status = check_color(game, line, 'F');
 	else
-		return (return_erro("Indentificador Desconhecido\n", 0, 0, 0));
+		return (return_erro("Indentificador Desconhecido ou "
+				"Indentificador em Falta\n", 0, 0, 0));
 	if (game->textures.east.path && game->textures.north.path
 		&& game->textures.south.path && game->textures.west.path
-		&& game->map.floor && game->map.ceiling)
+		&& game->map.floor != -1 && game->map.ceiling != -1)
 		status = 2;
 	return (status);
 }
