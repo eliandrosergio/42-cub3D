@@ -55,7 +55,7 @@ cub3D/
 
 Este projeto faz parte do currículo da Escola 42, explorando conceitos de parsing e manipulação de arquivos como base para um futuro motor gráfico baseado em Raycasting.
 
-## 🧊 Sobre o Projeto (Personal)
+## 💙 Sobre o Projeto (Personal)
 
 Uma versão modificada, feita para fins de entretenimento, usando texturas no chão e no teto (em vez de cores) e outras futuras melhorias.
 
