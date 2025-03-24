@@ -28,24 +28,17 @@ static int	get_fd(t_game *game, int *fd)
 static int	get_assets(t_game *game, int *fd, int *i)
 {
 	int		status;
-	int		is_others;
 	char	*line;
 
 	status = 0;
-	is_others = 0;
 	line = NULL;
 	while (*i < game->map.height_file)
 	{
 		line = get_next_line(*fd, 0);
-		if (is_others)
-			line = trim_spaces(line, " \n");
 		if ((line && *i == 0) && (line[*i] == '\0' || line[*i] == '\n'))
-		{
-			printf("pegou fogo\n");
-			return (1);
-		}
-		if (*i != 0)
-			is_others = 1;
+			return (return_erro("O arquivo .cub não deve iniciar com"
+					" linhas vazias ou somente com espaços\n", 0, 0, 0));
+		line = trim_spaces(line, " \n");
 		if (line)
 			status = check_param_lines(game, line);
 		free(line);

@@ -12,20 +12,6 @@
 
 #include "cub3d.h"
 
-static int	is_only_spaces(char *line)
-{
-	int		i;
-
-	i = 0;
-	while (line[i])
-	{
-		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
 static int	get_map_init_line(t_game *game, int y)
 {
 	int		fd;

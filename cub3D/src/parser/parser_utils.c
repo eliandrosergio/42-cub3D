@@ -30,6 +30,20 @@ char	*trim_spaces(char *line, char *srch)
 	return (trimmed);
 }
 
+int	is_only_spaces(char *line)
+{
+	int		i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	get_line_file(t_game *game)
 {
 	int		fd;
