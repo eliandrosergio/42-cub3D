@@ -1,0 +1,13 @@
+SO ./assets/brick/brick1.xpm  
+WE ./assets/wood/wood3.xpm  
+EA ./assets/paper/paper4.xpm  
+NO ./assets/other/other1.xpm  
+
+CE ./assets/carpet/carpet3.xpm  
+FL ./assets/wood/wood4.xpm  
+
+1111111  
+1 100 1  
+1 101 1  
+1 1W1 1  
+1111111  
