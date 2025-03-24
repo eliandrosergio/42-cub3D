@@ -30,6 +30,15 @@ static void	free_tab(void **tab)
 	return ;
 }
 
+static int	return_erro_color(int is_two, int *rgb, char **rgb_char)
+{
+	if (rgb)
+		free(rgb);
+	if (is_two)
+		free_tab((void **)rgb_char);
+	return (-1);
+}
+
 static int	*copy_to_rgb(char **rgb_to_convert, int *rgb)
 {
 	int		i;
@@ -38,7 +47,7 @@ static int	*copy_to_rgb(char **rgb_to_convert, int *rgb)
 	while (rgb_to_convert[++i])
 	{
 		rgb[i] = ft_atoi(rgb_to_convert[i]);
-		if (rgb[i] == -1 || is_num(rgb_to_convert[i]))
+		if (rgb[i] == -1 || !is_num(rgb_to_convert[i]))
 		{
 			free_tab((void **)rgb_to_convert);
 			free(rgb);
@@ -66,14 +75,6 @@ static int	convert_rgb(int *rgb_tab)
 	return (rgb);
 }
 
-static int	return_erro_color(int *rgb, char **rgb_char)
-{
-	if (rgb)
-		free(rgb);
-	free_tab((void **)rgb_char);
-	return (-1);
-}
-
 int	rgb_to_hex(char *line)
 {
 	int		i;
@@ -88,13 +89,15 @@ int	rgb_to_hex(char *line)
 	while (rgb_in_line[count])
 		count++;
 	while (count != 3)
-		return (return_erro_color(rgb, rgb_in_line));
-	if (rgb_in_line[++i] && (ft_atoi(rgb_in_line[i]) > 255
-			|| ft_atoi(rgb_in_line[i]) < 0))
-		return (return_erro_color(rgb, rgb_in_line));
+		return (return_erro_color(1, rgb, rgb_in_line));
+	while (rgb_in_line[++i])
+		if (ft_atoi(rgb_in_line[i]) > 255 || ft_atoi(rgb_in_line[i]) < 0)
+			return (return_erro_color(1, rgb, rgb_in_line));
 	rgb = malloc(sizeof(int) * 3);
 	if (!rgb)
-		return (return_erro_color(rgb, rgb_in_line));
+		return (return_erro_color(1, rgb, rgb_in_line));
 	rgb = copy_to_rgb(rgb_in_line, rgb);
+	if (!rgb)
+		return (return_erro_color(0, rgb, 0));
 	return (convert_rgb(rgb));
 }

@@ -20,18 +20,26 @@ void	print_erro(char *str)
 
 int	is_num(char *str)
 {
-	int		i;
-	int		status;
+	int	i;
 
+	if (!str)
+		return (0);
+	while (*str == ' ' || *str == '\t' || *str == '\n')
+		str++;
+	if (!*str)
+		return (0);
+	if ((*str == '-' || *str == '+') && ft_isdigit(str[1]))
+		str++;
 	i = 0;
-	status = 0;
 	while (str[i])
 	{
-		if (ft_isdigit(str[i]))
-			status = 0;
+		if (!ft_isdigit(str[i]))
+			break ;
 		i++;
 	}
-	return (status);
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
+		i++;
+	return (str[i] == '\0');
 }
 
 int	ft_strchr_int(const char *s, int c)
