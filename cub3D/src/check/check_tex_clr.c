@@ -12,6 +12,17 @@
 
 #include "cub3d.h"
 
+static void	verific_line(char *line)
+{
+	int		len;
+
+	len = 0;
+	len = ft_strlen(line);
+	len--;
+	if (line[len] && (line[len] == '\n'))
+		line[len] = '\0';
+}
+
 static int	check_texture(t_game *game, char *line, char dir)
 {
 	char	*temp;
@@ -20,10 +31,14 @@ static int	check_texture(t_game *game, char *line, char dir)
 	if (!temp)
 		return (return_erro("Falha ao alocar memória da textura\n", 0, 0, 0));
 	line = trim_spaces(temp, " ");
+	verific_line(line);
 	if (!line)
 		return (return_erro("Falha ao alocar memória da textura\n", 0, 0, 0));
 	if (check_extension(line, ".xpm"))
+	{
+		printf("%s\n", line);
 		return (return_erro("Use uma textura de extensão .xpm\n", 0, 0, line));
+	}
 	if (check_file(line))
 		return (return_erro("Não foi possivel acessar o arquivo da textura\n",
 				0, 0, line));

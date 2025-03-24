@@ -159,7 +159,6 @@ int		is_num(char *str);
 void	print_erro(char *str);
 int		rgb_to_hex(char *line);
 int		exit_game(t_game *game);
-int		ft_strchr_int(const char *s, int c);
 void	cleanup_exit(t_game *game, int exitcode);
 int		return_erro(char *str1, char *str2, char *str3, char *line);
 

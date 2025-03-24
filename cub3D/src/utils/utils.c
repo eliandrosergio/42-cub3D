@@ -42,20 +42,6 @@ int	is_num(char *str)
 	return (str[i] == '\0');
 }
 
-int	ft_strchr_int(const char *s, int c)
-{
-	char	find_c;
-
-	find_c = c;
-	while (*s != find_c)
-	{
-		if (*s == '\0')
-			return (1);
-		s++;
-	}
-	return (0);
-}
-
 int	return_erro(char *str1, char *str2, char *str3, char *line)
 {
 	print_erro(str1);

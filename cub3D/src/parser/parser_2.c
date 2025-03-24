@@ -12,6 +12,20 @@
 
 #include "cub3d.h"
 
+static int	is_only_spaces(char *line)
+{
+	int		i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 static int	get_map_init_line(t_game *game, int y)
 {
 	int		fd;
@@ -43,6 +57,9 @@ static int	get_map_tam(t_game *game, int fd2)
 		line = get_next_line(fd2, 0);
 		if (!line)
 			break ;
+		if (line[0] == '\n' || is_only_spaces(line))
+			return (return_erro("O mapa não pode possuir linhas vazias "
+					"ou apenas com espaços\n", 0, 0, line));
 		if (((int)(ft_strlen(line))) > game->map.width)
 			game->map.width = ((int)ft_strlen(line));
 		free(line);
@@ -61,7 +78,6 @@ static int	fill_helper(t_game *game, char *line, int *fd, int *i)
 	status = 0;
 	while (*i)
 	{
-		line = trim_spaces(line, " \n");
 		if (line)
 		{
 			status = check_map_chars(game, line, y);
@@ -84,9 +100,15 @@ int	fill_map(t_game *game, char *line, int *fd, int *i)
 	status = 0;
 	fd2 = get_map_init_line(game, (*i));
 	if (fd2 == -1)
+	{
+		free(line);
 		return (1);
+	}
 	if (get_map_tam(game, fd2))
+	{
+		free(line);
 		return (1);
+	}
 	close(fd2);
 	game->map.grid = allocate_grid(game->map.width, game->map.height);
 	(*i) = game->map.height;

@@ -76,7 +76,7 @@ int	check_map_chars(t_game *game, char *line, int y)
 			game->map.grid[y][x] = line[x];
 		else if (line[x] == ' ')
 			game->map.grid[y][x] = 'V';
-		else
+		else if (line[x] != '\n')
 			return (return_erro("Caractere inválido no mapa\n", 0, 0, 0));
 		x++;
 	}

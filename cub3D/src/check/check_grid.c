@@ -55,38 +55,23 @@ static int	check_border_h(t_game *game, int y)
 
 static int	check_char_border(char **grid, int y, int x, int last_line)
 {
-	if (y != 0)
-		if (grid[y - 1][x] != 'V' && grid[y - 1][x] != '1')
-			return (border_erro("Borda superior inválida do caractere ",
-					x, " da linha ", y));
-	if (y != last_line)
-		if (grid[y + 1][x] != 'V' && grid[y + 1][x] != '1')
-			return (border_erro("Borda inferior inválida do caractere ",
-					x, " da linha ", y));
-	if (grid[y][x + 1] != 'V' && grid[y][x + 1] != '1')
-		return (border_erro("Borda direita inválida do caractere ",
-				x, " da linha ", y));
-	if (grid[y][x - 1] != 'V' && grid[y][x - 1] != '1')
-		return (border_erro("Borda esquerda inválida do caractere ",
-				x, " da linha ", y));
-	return (0);
-}
+	char	valid;
 
-static int	check_char_border2(char **grid, int y, int x, int last_line)
-{
+	valid = grid[y][x];
 	if (y != 0)
-		if (grid[y - 1][x] != '0' && grid[y - 1][x] != '1')
+		if ((grid[y - 1][x] != valid) && (grid[y - 1][x] != '1'))
 			return (border_erro("Borda superior inválida do caractere ",
 					x, " da linha ", y));
 	if (y != last_line)
-		if (grid[y + 1][x] != '0' && grid[y + 1][x] != '1')
+		if (grid[y + 1][x] != valid && grid[y + 1][x] != '1')
 			return (border_erro("Borda inferior inválida do caractere ",
 					x, " da linha ", y));
-	if (grid[y][x + 1] != '0' && grid[y][x + 1] != '1')
+	if ((x - 1) >= 0)
+		if (grid[y][x - 1] != valid && grid[y][x - 1] != '1')
+			return (border_erro("Borda esquerda inválida do caractere ",
+					x, " da linha ", y));
+	if (grid[y][x + 1] != valid && grid[y][x + 1] != '1')
 		return (border_erro("Borda direita inválida do caractere ",
-				x, " da linha ", y));
-	if (grid[y][x - 1] != '0' && grid[y][x - 1] != '1')
-		return (border_erro("Borda esquerda inválida do caractere ",
 				x, " da linha ", y));
 	return (0);
 }
@@ -107,10 +92,8 @@ static int	check_in_grid(t_game *game, int last_line)
 		len_line = (int)ft_strlen(game->map.grid[y]);
 		while (x < len_line)
 		{
-			if (game->map.grid[y][x] == 'V')
+			if (game->map.grid[y][x] == 'V' || game->map.grid[y][x] == '0')
 				status = check_char_border(game->map.grid, y, x, last_line);
-			if (game->map.grid[y][x] == '0')
-				status = check_char_border2(game->map.grid, y, x, last_line);
 			x++;
 			if (status)
 				break ;

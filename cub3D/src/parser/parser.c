@@ -28,14 +28,24 @@ static int	get_fd(t_game *game, int *fd)
 static int	get_assets(t_game *game, int *fd, int *i)
 {
 	int		status;
+	int		is_others;
 	char	*line;
 
 	status = 0;
+	is_others = 0;
 	line = NULL;
 	while (*i < game->map.height_file)
 	{
 		line = get_next_line(*fd, 0);
-		line = trim_spaces(line, " \n");
+		if (is_others)
+			line = trim_spaces(line, " \n");
+		if ((line && *i == 0) && (line[*i] == '\0' || line[*i] == '\n'))
+		{
+			printf("pegou fogo\n");
+			return (1);
+		}
+		if (*i != 0)
+			is_others = 1;
 		if (line)
 			status = check_param_lines(game, line);
 		free(line);
