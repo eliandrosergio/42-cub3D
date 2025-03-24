@@ -53,26 +53,29 @@ static int	check_border_h(t_game *game, int y)
 	return (0);
 }
 
-static int	check_char_border(char **grid, int y, int x, int last_line)
+static int	check_char_border(t_map *map, int y, int x, int last_line)
 {
-	char	valid;
+	char	not_valid;
 
-	valid = grid[y][x];
+	not_valid = 'V';
+	if (map->grid[y][x] == 'V')
+		not_valid = '0';
 	if (y != 0)
-		if ((grid[y - 1][x] != valid) && (grid[y - 1][x] != '1'))
+		if (map->grid[y - 1][x] == not_valid)
 			return (border_erro("Borda superior inválida do caractere ",
 					x, " da linha ", y));
 	if (y != last_line)
-		if (grid[y + 1][x] != valid && grid[y + 1][x] != '1')
+		if (map->grid[y + 1][x] == not_valid)
 			return (border_erro("Borda inferior inválida do caractere ",
 					x, " da linha ", y));
 	if ((x - 1) >= 0)
-		if (grid[y][x - 1] != valid && grid[y][x - 1] != '1')
+		if (map->grid[y][x - 1] == not_valid)
 			return (border_erro("Borda esquerda inválida do caractere ",
 					x, " da linha ", y));
-	if (grid[y][x + 1] != valid && grid[y][x + 1] != '1')
-		return (border_erro("Borda direita inválida do caractere ",
-				x, " da linha ", y));
+	if ((x + 1) < map->height)
+		if (map->grid[y][x + 1] == not_valid)
+			return (border_erro("Borda direita inválida do caractere ",
+					x, " da linha ", y));
 	return (0);
 }
 
@@ -93,7 +96,7 @@ static int	check_in_grid(t_game *game, int last_line)
 		while (x < len_line)
 		{
 			if (game->map.grid[y][x] == 'V' || game->map.grid[y][x] == '0')
-				status = check_char_border(game->map.grid, y, x, last_line);
+				status = check_char_border(&game->map, y, x, last_line);
 			x++;
 			if (status)
 				break ;

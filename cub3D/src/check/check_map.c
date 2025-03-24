@@ -80,6 +80,8 @@ int	check_map_chars(t_game *game, char *line, int y)
 			return (return_erro("Caractere inválido no mapa\n", 0, 0, 0));
 		x++;
 	}
+	while (x < game->map.width)
+		game->map.grid[y][x++] = 'V';
 	game->map.grid[y][x] = '\0';
 	return (0);
 }

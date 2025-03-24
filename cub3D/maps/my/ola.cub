@@ -1,18 +1,18 @@
-SO ./assets/64/cordial/south.xpm
+SO ./assets/cordial/south.xpm
 
+WE ./assets/cordial/west.xpm
 
+EA ./assets/cordial/east.xpm
 
-
-WE ./assets/64/cordial/west.xpm
-EA ./assets/64/cordial/east.xpm
-NO ./assets/64/cordial/north.xpm
+NO ./assets/cordial/north.xpm
 
 
 C 1 , 155 , 255
 F 0 , 255 , 100
 
-111111
-100101
-101001
-1100N1
+
+111111          
+100101     
+101001      
+1100N1                                 
 111111
