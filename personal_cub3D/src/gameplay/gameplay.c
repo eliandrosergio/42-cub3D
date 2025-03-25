@@ -28,6 +28,8 @@ static int	key_press(int key, t_game *game)
 		game->move.camera = 'l';
 	if (key == KEY_RIGHT)
 		game->move.camera = 'r';
+	if (key == KEY_LSHIFT)
+		game->move.speed = 1;
 	return (0);
 }
 
@@ -49,11 +51,17 @@ static int	key_release(int key, t_game *game)
 		game->move.camera = ' ';
 	if (key == KEY_RIGHT)
 		game->move.camera = ' ';
+	if (key == KEY_LSHIFT)
+		game->move.speed = 0;
 	return (0);
 }
 
 static int	movement_player(t_game *game)
 {
+	if (game->move.speed)
+		game->player.move_speed = 0.040;
+	else
+		game->player.move_speed = 0.012;
 	if (game->move.move_v == 'w')
 		key_move(game, game->player.dir_x, game->player.dir_y, 'm');
 	else if (game->move.move_v == 's')
@@ -83,5 +91,7 @@ void	start_game(t_game *game)
 	mlx_hook(game->win, 2, 1L << 0, key_press, game);
 	mlx_hook(game->win, 3, 1L << 1, key_release, game);
 	mlx_hook(game->win, 17, 1L << 17, exit_game, game);
+	mlx_hook(game->win, 6, 1L << 6, mouse_move, game);
+	mlx_mouse_hide(game->mlx, game->win);
 	mlx_loop_hook(game->mlx, gameplay, game);
 }

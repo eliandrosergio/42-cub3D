@@ -12,19 +12,6 @@
 
 #include "cub3d.h"
 
-static int	is_valid_move(t_game *game, double x, double y)
-{
-	double	collision_buffer;
-
-	collision_buffer = 0.1;
-	if (x < 0 || y < 0 || x >= game->map.width || y >= game->map.height)
-		return (0);
-	return (game->map.grid[(int)(y + collision_buffer)][(int)x] != '1'
-		&& game->map.grid[(int)(y - collision_buffer)][(int)x] != '1'
-		&& game->map.grid[(int)y][(int)(x + collision_buffer)] != '1'
-		&& game->map.grid[(int)y][(int)(x - collision_buffer)] != '1');
-}
-
 static void	rotate(t_player *player, double speed)
 {
 	double	old_dir_x;
@@ -65,4 +52,22 @@ void	key_move(t_game *game, double dir_x, double dir_y, char move_type)
 	else if (move_type == 'r')
 		rotate(&game->player, ((int)dir_y * game->player.rot_speed));
 	return ;
+}
+
+int	mouse_move(int x, int y, t_game *game)
+{
+	static int	last_x;
+	int			delta_x;
+
+	(void)y;
+	delta_x = 0;
+	last_x = WIDTH / 2;
+	mlx_mouse_move(game->mlx, game->win, WIDTH / 2, HEIGHT / 2);
+	delta_x = x - last_x;
+	if (delta_x > 0)
+		key_move(game, 0, -1, 'r');
+	else if (delta_x < 0)
+		key_move(game, 0, 1, 'r');
+	last_x = WIDTH / 2;
+	return (0);
 }

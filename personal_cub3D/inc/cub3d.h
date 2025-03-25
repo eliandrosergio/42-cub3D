@@ -23,6 +23,7 @@
 # define TITLE "eliandrosergio Personal cub3D"
 # define TEXWIDTH 1024
 # define TEXHEIGHT 1024
+# define MAX_SPRITES 3
 
 # define KEY_ESQ 65307
 # define KEY_W 119
@@ -31,6 +32,7 @@
 # define KEY_D 100
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
+# define KEY_LSHIFT 65505
 
 typedef struct t_floorcast
 {
@@ -73,6 +75,7 @@ typedef struct s_wall
 
 typedef struct s_move
 {
+	int			speed;
 	char		move_v;
 	char		move_h;
 	char		camera;
@@ -86,7 +89,19 @@ typedef struct s_texture
 	t_img		west;
 	t_img		floor;
 	t_img		ceiling;
+	t_img		sprite2;
+	t_img		sprite3;
+	t_img		sprite4;
 }	t_texture;
+
+typedef struct s_sprite
+{
+	double		x;
+	double		y;
+	int			id;
+	int			solid;
+	double		distance;
+}	t_sprite;
 
 typedef struct s_ray
 {
@@ -105,14 +120,23 @@ typedef struct s_ray
 	int			side;
 }	t_ray;
 
-typedef struct s_map
+typedef struct s_spray
 {
-	int			width;
-	int			height;
-	int			height_file;
-	char		*path_file;
-	char		**grid;
-}	t_map;
+	double		dist1;
+	double		dist2;
+	double		sprite_x;
+	double		sprite_y;
+	double		transform_x;
+	double		transform_y;
+	int			spcount;
+	int			sprite_screen_x;
+	int			sprite_height;
+	int			sprite_width;
+	int			draw_start_x;
+	int			draw_end_x;
+	int			draw_start_y;
+	int			draw_end_y;
+}	t_spray;
 
 typedef struct s_player
 {
@@ -127,6 +151,15 @@ typedef struct s_player
 	double		rot_speed;
 }	t_player;
 
+typedef struct s_map
+{
+	int			width;
+	int			height;
+	int			height_file;
+	char		*path_file;
+	char		**grid;
+}	t_map;
+
 typedef struct s_game
 {
 	void		*mlx;
@@ -137,6 +170,8 @@ typedef struct s_game
 	t_move		move;
 	t_player	player;
 	t_texture	textures;
+	t_spray		spray;
+	t_sprite	g_sprites[MAX_SPRITES];
 }	t_game;
 
 // check
@@ -152,6 +187,8 @@ int		check_map_chars(t_game *game, char *line, int y);
 
 // gameplay
 void	start_game(t_game *game);
+int		mouse_move(int x, int y, t_game *game);
+int		is_valid_move(t_game *game, double x, double y);
 void	key_move(t_game *game, double dir_x, double dir_y, char move_type);
 
 // init
@@ -168,6 +205,8 @@ int		fill_map(t_game *game, char *line, int *fd, int *i);
 
 // render
 void	raycasting(t_game *game);
+void	draw_sprites(t_game *game);
+void	find_sprites(t_game *game);
 void	draw_ray(t_game *game, int x);
 void	draw_ceiling_and_floor(t_game *game);
 int		get_pixel_color(t_img *img, int x, int y);

@@ -72,5 +72,6 @@ void	raycasting(t_game *game)
 		draw_ray(game, x);
 		x++;
 	}
+	draw_sprites(game);
 	return ;
 }

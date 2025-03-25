@@ -54,6 +54,9 @@ static void	cleanup_path(t_game *game)
 	if (game->textures.floor.path)
 		free(game->textures.floor.path);
 	game->textures.floor.path = NULL;
+	if (game->textures.sprite2.path)
+		free(game->textures.sprite2.path);
+	game->textures.sprite2.path = NULL;
 	return ;
 }
 
@@ -80,6 +83,9 @@ static void	cleanup_img(t_game *game)
 	if (game->img.img)
 		mlx_destroy_image(game->mlx, game->img.img);
 	game->img.img = NULL;
+	if (game->textures.sprite2.img)
+		mlx_destroy_image(game->mlx, game->textures.sprite2.img);
+	game->textures.sprite2.img = NULL;
 	return ;
 }
 
@@ -89,6 +95,18 @@ void	cleanup_exit(t_game *game, int exitcode)
 	cleanup_path(game);
 	cleanup_img(game);
 	get_next_line(0, 1);
+	if (game->textures.sprite3.path)
+		free(game->textures.sprite3.path);
+	game->textures.sprite3.path = NULL;
+	if (game->textures.sprite4.path)
+		free(game->textures.sprite4.path);
+	game->textures.sprite4.path = NULL;
+	if (game->textures.sprite3.img)
+		mlx_destroy_image(game->mlx, game->textures.sprite3.img);
+	game->textures.sprite3.img = NULL;
+	if (game->textures.sprite4.img)
+		mlx_destroy_image(game->mlx, game->textures.sprite4.img);
+	game->textures.sprite4.img = NULL;
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)

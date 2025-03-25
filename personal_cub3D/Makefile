@@ -36,6 +36,7 @@ SRC_FILES	=	$(SRC_PATH)main.c \
 				$(SRC_PATH)check/check_texture.c \
 				$(SRC_PATH)check/check_utils.c \
 				$(SRC_PATH)gameplay/gameplay.c \
+				$(SRC_PATH)gameplay/move_check.c \
 				$(SRC_PATH)gameplay/move.c \
 				$(SRC_PATH)init/init_utils.c \
 				$(SRC_PATH)init/init.c \
@@ -46,6 +47,7 @@ SRC_FILES	=	$(SRC_PATH)main.c \
 				$(SRC_PATH)render/draw_raycasting.c \
 				$(SRC_PATH)render/raycasting.c \
 				$(SRC_PATH)render/render_utils.c \
+				$(SRC_PATH)render/sprites.c \
 				$(SRC_PATH)utils/cleanup.c \
 				$(SRC_PATH)utils/utils.c
 

@@ -30,3 +30,45 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 	return ;
 }
+
+static void	find_sprites_helper(t_game *game, int y, int x)
+{
+	char	cell;
+
+	cell = game->map.grid[y][x];
+	if (cell == '2' || cell == '3' || cell == '4')
+	{
+		if (game->spray.spcount < MAX_SPRITES)
+		{
+			game->g_sprites[game->spray.spcount].x = x + 0.5;
+			game->g_sprites[game->spray.spcount].y = y + 0.5;
+			game->g_sprites[game->spray.spcount].id = cell - '0';
+			game->g_sprites[game->spray.spcount].solid = 0;
+			if (cell != '2')
+				game->g_sprites[game->spray.spcount].solid = 1;
+			game->spray.spcount++;
+		}
+	}
+	return ;
+}
+
+void	find_sprites(t_game *game)
+{
+	int		x;
+	int		y;
+
+	x = 0;
+	y = 0;
+	game->spray.spcount = 0;
+	while (y < game->map.height)
+	{
+		x = 0;
+		while (x < game->map.width)
+		{
+			find_sprites_helper(game, y, x);
+			x++;
+		}
+		y++;
+	}
+	return ;
+}

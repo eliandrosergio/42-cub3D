@@ -1,13 +1,15 @@
-SO ./assets/other/other2.xpm  
-WE ./assets/brick/brick1.xpm  
-EA ./assets/paper/paper3.xpm  
-NO ./assets/wood/wood4.xpm  
+SO ./assets/brick/brick4.xpm
+WE ./assets/brick/brick4.xpm
+EA ./assets/brick/brick4.xpm
+NO ./assets/brick/brick4.xpm
 
-CE ./assets/carpet/carpet1.xpm  
-FL ./assets/wood/wood2.xpm  
+CE ./assets/paper/paper3.xpm
+FL ./assets/other/other4.xpm
 
-11111  
-1N001   
-10001  
-11011
-111 1
+11111111111111111
+10000000000000001
+10004000000000001
+10000000300000001
+10000000000020001
+100000000000000N1
+11111111111111111

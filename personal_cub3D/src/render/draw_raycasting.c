@@ -81,18 +81,18 @@ static void	draw_wall(t_game *game, int x)
 	t_img	texture;
 
 	calculate_wall_params(game, &data);
+	if (game->ray.side == 0 && game->ray.dir_x > 0)
+		texture = game->textures.east;
+	else if (game->ray.side == 0 && game->ray.dir_x < 0)
+		texture = game->textures.west;
+	else if (game->ray.side == 1 && game->ray.dir_y < 0)
+		texture = game->textures.north;
+	else
+		texture = game->textures.south;
 	while (data.draw_start < data.draw_end)
 	{
 		tex_y = (int)data.tex_pos & (TEXHEIGHT - 1);
 		data.tex_pos += data.step;
-		if (game->ray.side == 0 && game->ray.dir_x > 0)
-			texture = game->textures.east;
-		else if (game->ray.side == 0 && game->ray.dir_x < 0)
-			texture = game->textures.west;
-		else if (game->ray.side == 1 && game->ray.dir_y < 0)
-			texture = game->textures.north;
-		else
-			texture = game->textures.south;
 		color = get_pixel_color(&texture, data.tex_x, tex_y);
 		my_mlx_pixel_put(&game->img, x, data.draw_start, color);
 		data.draw_start++;

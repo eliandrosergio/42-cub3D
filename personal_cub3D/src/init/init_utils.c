@@ -27,33 +27,6 @@ static void	free_grid(char **grid, int height)
 	return ;
 }
 
-char	**allocate_grid(int width, int height)
-{
-	int		i;
-	char	**grid;
-
-	i = 0;
-	grid = ft_calloc((height + 1), sizeof(char *));
-	if (!grid)
-	{
-		perror("Erro ao alocar a grelha do mapa\n");
-		free(grid);
-		return (NULL);
-	}
-	while (i < height)
-	{
-		grid[i] = ft_calloc(width, sizeof(int));
-		if (!grid[i])
-		{
-			perror("Erro ao alocar linha da grelha do mapa\n");
-			free_grid(grid, i);
-			return (NULL);
-		}
-		i++;
-	}
-	return (grid);
-}
-
 int	load_texture(t_game *game, char tex_dir)
 {
 	int		width;
@@ -79,4 +52,31 @@ int	load_texture(t_game *game, char tex_dir)
 	texture->addr = mlx_get_data_addr(texture->img, &texture->bits_per_pixel,
 			&texture->line_length, &texture->endian);
 	return (0);
+}
+
+char	**allocate_grid(int width, int height)
+{
+	int		i;
+	char	**grid;
+
+	i = 0;
+	grid = ft_calloc((height + 1), sizeof(char *));
+	if (!grid)
+	{
+		perror("Erro ao alocar a grelha do mapa\n");
+		free(grid);
+		return (NULL);
+	}
+	while (i < height)
+	{
+		grid[i] = ft_calloc(width, sizeof(int));
+		if (!grid[i])
+		{
+			perror("Erro ao alocar linha da grelha do mapa\n");
+			free_grid(grid, i);
+			return (NULL);
+		}
+		i++;
+	}
+	return (grid);
 }
