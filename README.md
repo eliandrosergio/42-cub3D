@@ -37,7 +37,7 @@
 ## 📂 Estrutura do Projeto
 
 cub3D/
-- **assets/**: Texturas e sprites (futuro)
+- **assets/**: Texturas e sprites
 - **inc/**: Arquivo de cabeçalho
 - **libft/**: Código-fonte do libft
 - **maps/**: Exemplos de mapas .cub
@@ -57,11 +57,22 @@ Este projeto faz parte do currículo da Escola 42, explorando conceitos de parsi
 
 ## 💙 Sobre o Projeto (Personal)
 
-Uma versão modificada, feita para fins de entretenimento, usando texturas no chão e no teto (em vez de cores) e outras futuras melhorias.
+Uma versão **modificada**, feita para fins de **entretenimento e lazer**, usando texturas no **chão** e no **teto** (em vez de cores), **sprites** adicionais e alguns deles **sólidos** e outros não, movimentação da câmera pelo **mouse** e outras futuras melhorias.
 
-## 📜 Licença de Algumas Texturas Usada
+## 📜 Licenças e Agradecimentos
 
-This work © 2025 by McGravel is licensed under Creative Commons Attribution-ShareAlike 4.0 International.
-To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/
+### Texturas de McGravel (Agradecimento)
 
-### 🚀 Feito com ❤️ por **eliandrosergio** 🎮
+- Estas texturas foram criadas por **McGravel** e estão licenciadas sob a Creative Commons Attribution-ShareAlike 4.0 International.
+Para ver uma cópia da licença, acesse: [Creative Commons BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+### Sprites e Texturas de Wolfenstein 3D
+
+- Os sprites e texturas originais de Wolfenstein 3D são propriedade da **id Software**. Seu uso neste projeto é apenas para fins educacionais e sem fins lucrativos.
+
+### Referência para estudo de Raycasting
+
+- Este projeto se baseia nos ensinamentos do artigo de **Lode Vandevenne** (2004-2020), que fornece uma excelente explicação sobre Raycasting. Para mais informações, acesse: [Lode’s Computer Graphics Tutorial](https://lodev.org/cgtutor/raycasting.html).
+
+
+### 🚀 Desenvolvido com paixão ❤️ por [**eliandrosergio**](https://github.com/eliandrosergio/) 🎮
