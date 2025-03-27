@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: elian <elian@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:49:28 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/20 22:25:49 by efaustin         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:30:39 by elian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	exit_game(t_game *game)
+{
+	cleanup_exit(game, 0);
+	return (0);
+}
 
 int	main(int ac, char **av)
 {

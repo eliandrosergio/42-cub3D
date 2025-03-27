@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: elian <elian@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:27:55 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/20 22:07:03 by efaustin         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:26:37 by elian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,14 @@
 
 # define WIDTH 1280
 # define HEIGHT 720
-# define TITLE "eliandrosergio Personal cub3D"
+# define TITLE "github.com/eliandrosergio/cub3D"
+
 # define TEXWIDTH 1024
 # define TEXHEIGHT 1024
-# define MAX_SPRITES 3
+# define NUM_SPRITES 3
+# define MAX_SPRITES 64
+# define SPEED_PLAYER 0.008
+# define SPEED_CAMERA 0.006
 
 # define KEY_ESQ 65307
 # define KEY_W 119
@@ -33,6 +37,34 @@
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
 # define KEY_LSHIFT 65505
+
+typedef struct s_sprite
+{
+	double		x;
+	double		y;
+	int			id;
+	int			solid;
+	double		distance;
+}	t_sprite;
+
+typedef struct s_spdata
+{
+	double		dist1;
+	double		dist2;
+	double		sprite_x;
+	double		sprite_y;
+	double		transform_x;
+	double		transform_y;
+	int			spcount;
+	int			sprite_screen_x;
+	int			sprite_height;
+	int			sprite_width;
+	int			draw_start_x;
+	int			draw_end_x;
+	int			draw_start_y;
+	int			draw_end_y;
+	t_sprite	sprites[MAX_SPRITES];
+}	t_spdata;
 
 typedef struct t_floorcast
 {
@@ -53,16 +85,6 @@ typedef struct t_floorcast
 	double		floor_step_y;
 }	t_floorcast;
 
-typedef struct s_img
-{
-	void		*img;
-	char		*addr;
-	char		*path;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-}	t_img;
-
 typedef struct s_wall
 {
 	double		step;
@@ -81,6 +103,16 @@ typedef struct s_move
 	char		camera;
 }	t_move;
 
+typedef struct s_img
+{
+	void		*img;
+	char		*addr;
+	char		*path;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+}	t_img;
+
 typedef struct s_texture
 {
 	t_img		east;
@@ -89,30 +121,20 @@ typedef struct s_texture
 	t_img		west;
 	t_img		floor;
 	t_img		ceiling;
-	t_img		sprite2;
-	t_img		sprite3;
-	t_img		sprite4;
+	t_img		sprites[NUM_SPRITES];
 }	t_texture;
-
-typedef struct s_sprite
-{
-	double		x;
-	double		y;
-	int			id;
-	int			solid;
-	double		distance;
-}	t_sprite;
 
 typedef struct s_ray
 {
 	double		dir_x;
 	double		dir_y;
+	double		wall_x;
 	double		side_dist_y;
 	double		side_dist_x;
 	double		delta_dist_x;
 	double		delta_dist_y;
 	double		perp_wall_dist;
-	double		wall_x;
+	double		wall_distances[WIDTH];
 	int			map_y;
 	int			map_x;
 	int			step_x;
@@ -120,35 +142,16 @@ typedef struct s_ray
 	int			side;
 }	t_ray;
 
-typedef struct s_spray
-{
-	double		dist1;
-	double		dist2;
-	double		sprite_x;
-	double		sprite_y;
-	double		transform_x;
-	double		transform_y;
-	int			spcount;
-	int			sprite_screen_x;
-	int			sprite_height;
-	int			sprite_width;
-	int			draw_start_x;
-	int			draw_end_x;
-	int			draw_start_y;
-	int			draw_end_y;
-}	t_spray;
-
 typedef struct s_player
 {
 	int			dir;
+	float		speed;
 	double		pos_y;
 	double		pos_x;
 	double		dir_x;
 	double		dir_y;
 	double		plane_x;
 	double		plane_y;
-	double		move_speed;
-	double		rot_speed;
 }	t_player;
 
 typedef struct s_map
@@ -170,8 +173,7 @@ typedef struct s_game
 	t_move		move;
 	t_player	player;
 	t_texture	textures;
-	t_spray		spray;
-	t_sprite	g_sprites[MAX_SPRITES];
+	t_spdata	spdata;
 }	t_game;
 
 // check
@@ -194,19 +196,19 @@ void	key_move(t_game *game, double dir_x, double dir_y, char move_type);
 // init
 int		init_data(t_game *game);
 int		init_game(t_game *game);
-char	**allocate_grid(int width, int height);
-int		load_texture(t_game *game, char tex_dir);
+int		init_sprites(t_game *game);
+void	sort_sprites(t_game *game, int i);
 
 // parser
 int		get_line_file(t_game *game);
 int		save_file_info(t_game *game);
 char	*trim_spaces(char *line, char *srch);
+char	**allocate_grid(int width, int height);
 int		fill_map(t_game *game, char *line, int *fd, int *i);
 
 // render
+void	sprites(t_game *game);
 void	raycasting(t_game *game);
-void	draw_sprites(t_game *game);
-void	find_sprites(t_game *game);
 void	draw_ray(t_game *game, int x);
 void	draw_ceiling_and_floor(t_game *game);
 int		get_pixel_color(t_img *img, int x, int y);

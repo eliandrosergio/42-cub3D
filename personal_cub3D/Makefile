@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: efaustin <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: elian <elian@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/12 12:49:44 by efaustin          #+#    #+#              #
-#    Updated: 2025/03/20 21:19:15 by efaustin         ###   ########.fr        #
+#    Updated: 2025/03/26 15:23:12 by elian            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,16 +38,16 @@ SRC_FILES	=	$(SRC_PATH)main.c \
 				$(SRC_PATH)gameplay/gameplay.c \
 				$(SRC_PATH)gameplay/move_check.c \
 				$(SRC_PATH)gameplay/move.c \
-				$(SRC_PATH)init/init_utils.c \
+				$(SRC_PATH)init/init_sprites.c \
 				$(SRC_PATH)init/init.c \
 				$(SRC_PATH)parser/parser_2.c \
 				$(SRC_PATH)parser/parser_utils.c \
 				$(SRC_PATH)parser/parser.c \
 				$(SRC_PATH)render/draw_ceiling_and_floor.c \
 				$(SRC_PATH)render/draw_raycasting.c \
+				$(SRC_PATH)render/draw_sprites.c \
 				$(SRC_PATH)render/raycasting.c \
 				$(SRC_PATH)render/render_utils.c \
-				$(SRC_PATH)render/sprites.c \
 				$(SRC_PATH)utils/cleanup.c \
 				$(SRC_PATH)utils/utils.c
 

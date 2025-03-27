@@ -6,7 +6,7 @@
 /*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 19:32:07 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/20 22:10:59 by efaustin         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:00:16 by efaustin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static void	move(t_game *game, double dir_x, double dir_y)
 	double	new_x;
 	double	new_y;
 
-	new_x = game->player.pos_x + dir_x * game->player.move_speed;
-	new_y = game->player.pos_y + dir_y * game->player.move_speed;
+	new_x = game->player.pos_x + dir_x * SPEED_MOVE;
+	new_y = game->player.pos_y + dir_y * SPEED_MOVE;
 	if (is_valid_move(game, new_x, new_y))
 	{
 		game->player.pos_x = new_x;
@@ -63,6 +63,6 @@ void	key_move(t_game *game, double dir_x, double dir_y, char move_type)
 	if (move_type == 'm')
 		move(game, dir_x, dir_y);
 	else if (move_type == 'r')
-		rotate(&game->player, ((int)dir_y * game->player.rot_speed));
+		rotate(&game->player, ((int)dir_y * SPEED_CAMERA));
 	return ;
 }

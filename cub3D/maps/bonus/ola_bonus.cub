@@ -1,0 +1,24 @@
+SO ./assets/cordial/south.xpm
+
+WE ./assets/cordial/west.xpm
+
+EA ./assets/cordial/east.xpm
+
+NO ./assets/cordial/north.xpm
+
+
+C 1 , 155 , 255
+F 0 , 255 , 100
+
+
+1111111
+1031001
+1010201
+1030001
+1040001
+1002001
+1000401
+1030001
+1010201
+10310N1
+1111111

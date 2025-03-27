@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: elian <elian@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:47:54 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/20 21:54:29 by efaustin         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:42:11 by elian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,7 @@ int	check_map_chars(t_game *game, char *line, int y)
 			if (define_player_position(game, y, x, line[x]))
 				return (1);
 		}
-		else if (line[x] == '0' || line[x] == '1'
-			|| line[x] == '2' || line[x] == '3' || line[x] == '4')
+		else if (line[x] >= '0' && line[x] <= '9')
 			game->map.grid[y][x] = line[x];
 		else if (line[x] == ' ')
 			game->map.grid[y][x] = 'V';

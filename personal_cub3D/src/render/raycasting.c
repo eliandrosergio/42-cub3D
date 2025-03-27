@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: elian <elian@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 10:07:29 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/20 20:10:06 by efaustin         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:10:00 by elian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,5 @@ void	raycasting(t_game *game)
 		draw_ray(game, x);
 		x++;
 	}
-	draw_sprites(game);
 	return ;
 }

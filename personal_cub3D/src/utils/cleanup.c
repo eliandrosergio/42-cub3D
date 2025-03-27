@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: elian <elian@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:49:10 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/20 22:19:10 by efaustin         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:30:27 by elian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,29 @@ static void	cleanup_grid(t_game *game)
 		free(game->map.grid);
 	}
 	game->map.grid = NULL;
+	return ;
+}
+
+static void	cleanup_sprites(t_game *game)
+{
+	int		i;
+
+	i = 0;
+	while (i < NUM_SPRITES)
+	{
+		if (game->textures.sprites[i].path)
+			free(game->textures.sprites[i].path);
+		game->textures.sprites[i].path = NULL;
+		i++;
+	}
+	i = 0;
+	while (i < NUM_SPRITES)
+	{
+		if (game->textures.sprites[i].img)
+			mlx_destroy_image(game->mlx, game->textures.sprites[i].img);
+		game->textures.sprites[i].img = NULL;
+		i++;
+	}
 	return ;
 }
 
@@ -54,9 +77,6 @@ static void	cleanup_path(t_game *game)
 	if (game->textures.floor.path)
 		free(game->textures.floor.path);
 	game->textures.floor.path = NULL;
-	if (game->textures.sprite2.path)
-		free(game->textures.sprite2.path);
-	game->textures.sprite2.path = NULL;
 	return ;
 }
 
@@ -83,30 +103,16 @@ static void	cleanup_img(t_game *game)
 	if (game->img.img)
 		mlx_destroy_image(game->mlx, game->img.img);
 	game->img.img = NULL;
-	if (game->textures.sprite2.img)
-		mlx_destroy_image(game->mlx, game->textures.sprite2.img);
-	game->textures.sprite2.img = NULL;
 	return ;
 }
 
 void	cleanup_exit(t_game *game, int exitcode)
 {
 	cleanup_grid(game);
+	cleanup_sprites(game);
 	cleanup_path(game);
 	cleanup_img(game);
 	get_next_line(0, 1);
-	if (game->textures.sprite3.path)
-		free(game->textures.sprite3.path);
-	game->textures.sprite3.path = NULL;
-	if (game->textures.sprite4.path)
-		free(game->textures.sprite4.path);
-	game->textures.sprite4.path = NULL;
-	if (game->textures.sprite3.img)
-		mlx_destroy_image(game->mlx, game->textures.sprite3.img);
-	game->textures.sprite3.img = NULL;
-	if (game->textures.sprite4.img)
-		mlx_destroy_image(game->mlx, game->textures.sprite4.img);
-	game->textures.sprite4.img = NULL;
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
@@ -116,10 +122,4 @@ void	cleanup_exit(t_game *game, int exitcode)
 	}
 	exit(exitcode);
 	return ;
-}
-
-int	exit_game(t_game *game)
-{
-	cleanup_exit(game, 0);
-	return (0);
 }

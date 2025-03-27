@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_utils.c                                       :+:      :+:    :+:   */
+/*   parser_utils_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 12:48:21 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/12 15:20:24 by efaustin         ###   ########.fr       */
+/*   Created: 2025/03/12 12:48:42 by efaustin          #+#    #+#             */
+/*   Updated: 2025/03/26 14:24:19 by efaustin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 static void	free_grid(char **grid, int height)
 {
@@ -25,33 +25,6 @@ static void	free_grid(char **grid, int height)
 	free(grid);
 	grid = NULL;
 	return ;
-}
-
-int	load_texture(t_game *game, char tex_dir)
-{
-	int		width;
-	int		height;
-	t_img	*texture;
-
-	if (tex_dir == 'E')
-		texture = &game->textures.east;
-	else if (tex_dir == 'N')
-		texture = &game->textures.north;
-	else if (tex_dir == 'W')
-		texture = &game->textures.west;
-	else if (tex_dir == 'S')
-		texture = &game->textures.south;
-	else if (tex_dir == 'C')
-		texture = &game->textures.ceiling;
-	else if (tex_dir == 'F')
-		texture = &game->textures.floor;
-	texture->img = mlx_xpm_file_to_image(game->mlx, texture->path,
-			&width, &height);
-	if (!texture->img)
-		return (1);
-	texture->addr = mlx_get_data_addr(texture->img, &texture->bits_per_pixel,
-			&texture->line_length, &texture->endian);
-	return (0);
 }
 
 char	**allocate_grid(int width, int height)
@@ -79,4 +52,62 @@ char	**allocate_grid(int width, int height)
 		i++;
 	}
 	return (grid);
+}
+
+char	*trim_spaces(char *line, char *srch)
+{
+	char	*trimmed;
+
+	trimmed = NULL;
+	if (line)
+	{
+		trimmed = ft_strtrim(line, srch);
+		free(line);
+		if (!trimmed)
+		{
+			print_erro("Erro ao modificar uma linha do arquivo\n");
+			return (NULL);
+		}
+	}
+	return (trimmed);
+}
+
+int	is_only_spaces(char *line)
+{
+	int		i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	get_line_file(t_game *game)
+{
+	int		fd;
+	char	*line;
+
+	fd = open(game->map.path_file, O_RDONLY);
+	if (fd <= 0)
+	{
+		print_erro("Erro ao abrir o arquivo do mapa\n");
+		close(fd);
+		return (1);
+	}
+	line = NULL;
+	while (1)
+	{
+		free(line);
+		line = get_next_line(fd, 0);
+		if (!line)
+			break ;
+		game->map.height_file++;
+	}
+	free(line);
+	close(fd);
+	return (0);
 }

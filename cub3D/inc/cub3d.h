@@ -6,7 +6,7 @@
 /*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:27:55 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/20 22:07:03 by efaustin         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:00:30 by efaustin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@
 # define WIDTH 800
 # define HEIGHT 640
 # define TITLE "cub3D"
+
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
+# define SPEED_MOVE 0.008
+# define SPEED_CAMERA 0.006
 
 # define KEY_ESQ 65307
 # define KEY_W 119
@@ -104,8 +107,6 @@ typedef struct s_player
 	double		dir_y;
 	double		plane_x;
 	double		plane_y;
-	double		move_speed;
-	double		rot_speed;
 }	t_player;
 
 typedef struct s_game

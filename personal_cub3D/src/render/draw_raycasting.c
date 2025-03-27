@@ -104,6 +104,7 @@ void	draw_ray(t_game *game, int x)
 {
 	perform_dda(&game->ray, &game->map);
 	calc_wall_tex(game);
+	game->ray.wall_distances[x] = game->ray.perp_wall_dist;
 	draw_wall(game, x);
 	return ;
 }

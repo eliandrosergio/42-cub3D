@@ -6,7 +6,7 @@
 /*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 10:43:19 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/25 10:43:20 by efaustin         ###   ########.fr       */
+/*   Updated: 2025/03/26 09:56:45 by efaustin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,12 @@ static int	is_sprite_solid(t_game *game, int x, int y)
 	int	j;
 
 	j = 0;
-	while (j < game->spray.spcount)
+	while (j < game->spdata.spcount)
 	{
-		if ((int)game->g_sprites[j].x == x && (int)game->g_sprites[j].y == y)
+		if ((int)game->spdata.sprites[j].x == x
+			&& (int)game->spdata.sprites[j].y == y)
 		{
-			if (game->g_sprites[j].solid == 1)
+			if (game->spdata.sprites[j].solid == 1)
 				return (1);
 			break ;
 		}

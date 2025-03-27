@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_grid.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: elian <elian@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:47:46 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/12 15:20:24 by efaustin         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:53:54 by elian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ static int	check_in_grid(t_game *game, int last_line)
 		len_line = (int)ft_strlen(game->map.grid[y]);
 		while (x < len_line)
 		{
-			if (game->map.grid[y][x] == 'V' || game->map.grid[y][x] == '0')
+			if (game->map.grid[y][x] == 'V' || game->map.grid[y][x] == '0'
+				|| (game->map.grid[y][x] >= '2' && game->map.grid[y][x] <= '9'))
 				status = check_char_border(&game->map, y, x, last_line);
 			x++;
 			if (status)

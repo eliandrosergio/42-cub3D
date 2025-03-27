@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gameplay.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: elian <elian@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:27:55 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/20 22:11:18 by efaustin         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:10:12 by elian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ static int	key_release(int key, t_game *game)
 static int	movement_player(t_game *game)
 {
 	if (game->move.speed)
-		game->player.move_speed = 0.040;
+		game->player.speed = 1.5;
 	else
-		game->player.move_speed = 0.012;
+		game->player.speed = 1;
 	if (game->move.move_v == 'w')
 		key_move(game, game->player.dir_x, game->player.dir_y, 'm');
 	else if (game->move.move_v == 's')
@@ -82,6 +82,7 @@ static int	gameplay(t_game *game)
 	movement_player(game);
 	draw_ceiling_and_floor(game);
 	raycasting(game);
+	sprites(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 	return (0);
 }
@@ -92,6 +93,5 @@ void	start_game(t_game *game)
 	mlx_hook(game->win, 3, 1L << 1, key_release, game);
 	mlx_hook(game->win, 17, 1L << 17, exit_game, game);
 	mlx_hook(game->win, 6, 1L << 6, mouse_move, game);
-	mlx_mouse_hide(game->mlx, game->win);
 	mlx_loop_hook(game->mlx, gameplay, game);
 }
