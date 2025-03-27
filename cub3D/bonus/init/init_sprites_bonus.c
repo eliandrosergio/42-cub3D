@@ -64,7 +64,8 @@ static int	load_sprites(t_game *game)
 	{
 		path[22] = '0' + i;
 		if (check_file(path))
-			return (return_erro("Não foi possivel localizar um sprite\n", 0, 0, 0));
+			return (return_erro("Não foi possivel localizar um sprite\n"
+					, 0, 0, 0));
 		texture = &game->textures.sprites[i];
 		texture->path = ft_strdup(path);
 		texture->img = mlx_xpm_file_to_image(game->mlx, texture->path,
@@ -87,16 +88,16 @@ void	sort_sprites(t_game *game, int i)
 	j = -1;
 	k = -1;
 	while (++j < game->spdata.spcount)
-		game->spdata.sprites[j].distance = pow(game->spdata.sprites[j].x 
-			- game->player.pos_x, 2) + pow(game->spdata.sprites[j].y 
-			- game->player.pos_y, 2);
+		game->spdata.sprites[j].distance = pow(game->spdata.sprites[j].x
+				- game->player.pos_x, 2) + pow(game->spdata.sprites[j].y
+				- game->player.pos_y, 2);
 	while (++k < game->spdata.spcount - 1)
 	{
 		j = -1;
 		while (++j < game->spdata.spcount - i - 1)
 		{
-			if (game->spdata.sprites[j].distance < 
-				game->spdata.sprites[j + 1].distance)
+			if (game->spdata.sprites[j].distance
+				< game->spdata.sprites[j + 1].distance)
 			{
 				temp = game->spdata.sprites[j];
 				game->spdata.sprites[j] = game->spdata.sprites[j + 1];

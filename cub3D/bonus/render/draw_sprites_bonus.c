@@ -39,17 +39,17 @@ static void	transform_sprite(t_game *game, int i)
 	game->spdata.sprite_x = game->spdata.sprites[i].x - game->player.pos_x;
 	game->spdata.sprite_y = game->spdata.sprites[i].y - game->player.pos_y;
 	inv_det = 1.0 / (game->player.plane_x * game->player.dir_y
-		- game->player.dir_x * game->player.plane_y);
+			- game->player.dir_x * game->player.plane_y);
 	game->spdata.transform_x = inv_det * (game->player.dir_y
-		* game->spdata.sprite_x - game->player.dir_x
-		* game->spdata.sprite_y);
+			* game->spdata.sprite_x - game->player.dir_x
+			* game->spdata.sprite_y);
 	game->spdata.transform_y = inv_det * (-game->player.plane_y
-		* game->spdata.sprite_x + game->player.plane_x
-		* game->spdata.sprite_y);
+			* game->spdata.sprite_x + game->player.plane_x
+			* game->spdata.sprite_y);
 	game->spdata.sprite_screen_x = (int)((WIDTH / 2) * (1
-			+ game->spdata.transform_x / game->spdata.transform_y));
+				+ game->spdata.transform_x / game->spdata.transform_y));
 	game->spdata.sprite_height = abs((int)(HEIGHT
-			/ game->spdata.transform_y));
+				/ game->spdata.transform_y));
 	transform_sprite_helper(game);
 	return ;
 }
