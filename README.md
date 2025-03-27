@@ -47,9 +47,10 @@ cub3D/
 
 ## 👾 Controles
 
-- WASD : Movimentação
-- ← →  : Rotação da visão
-- ESC  : Sair do jogo
+- WASD  : Movimentação
+- ← →   : Rotação da visão
+- mouse : Rotação da visão
+- ESC   : Sair do jogo
 
 ## 📌 Sobre o Projeto (For 42)
 
