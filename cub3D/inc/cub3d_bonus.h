@@ -6,7 +6,7 @@
 /*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 13:19:48 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/27 13:19:59 by efaustin         ###   ########.fr       */
+/*   Updated: 2025/04/03 13:46:00 by efaustin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,7 @@ int		check_extension(char *str, char *key);
 int		check_param_lines(t_game *game, char *line);
 int		check_args(int ac, char **av, t_game *game);
 int		check_map_chars(t_game *game, char *line, int y);
+int		border_erro(char *str1, int x, char *str2, int y);
 
 // gameplay
 void	start_game(t_game *game);

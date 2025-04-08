@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_tex_clr.c                                    :+:      :+:    :+:   */
+/*   check_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:48:01 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/20 22:01:01 by efaustin         ###   ########.fr       */
+/*   Updated: 2025/04/03 13:41:49 by efaustin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static int	check_texture(t_game *game, char *line, char dir)
 	temp = ft_strdup(line + 2);
 	if (!temp)
 		return (return_erro("Falha ao alocar memória da textura\n", 0, 0, 0));
+	if (temp[1] == ' ' || temp[1] == '\t')
+		return (return_erro("Espaço ou tab após o Indentificador\n", 0, 0, temp));
 	line = trim_spaces(temp, " ");
 	if (!line)
 		return (return_erro("Falha ao alocar memória da textura\n", 0, 0, 0));

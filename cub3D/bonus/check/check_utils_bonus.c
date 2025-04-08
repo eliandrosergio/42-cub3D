@@ -1,16 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_utils.c                                      :+:      :+:    :+:   */
+/*   check_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elian <elian@student.42.fr>                +#+  +:+       +#+        */
+/*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:48:06 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/26 14:08:12 by elian            ###   ########.fr       */
+/*   Updated: 2025/04/03 13:45:25 by efaustin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+
+int	border_erro(char *str1, int x, char *str2, int y)
+{
+	print_erro(str1);
+	if (x != -1)
+		printf("%d", x);
+	if (str2)
+		printf("%s", str2);
+	if (y != -1)
+		printf("%d", y);
+	printf("\n");
+	return (1);
+}
 
 int	check_extension(char *str, char *key)
 {

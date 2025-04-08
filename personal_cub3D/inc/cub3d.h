@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elian <elian@student.42.fr>                +#+  +:+       +#+        */
+/*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:27:55 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/26 14:26:37 by elian            ###   ########.fr       */
+/*   Updated: 2025/04/03 13:41:21 by efaustin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # define TEXHEIGHT 1024
 # define NUM_SPRITES 3
 # define MAX_SPRITES 64
-# define SPEED_PLAYER 0.008
-# define SPEED_CAMERA 0.006
+# define SPEED_PLAYER 0.08
+# define SPEED_CAMERA 0.04
 
 # define KEY_ESQ 65307
 # define KEY_W 119
@@ -186,6 +186,7 @@ int		check_extension(char *str, char *key);
 int		check_param_lines(t_game *game, char *line);
 int		check_args(int ac, char **av, t_game *game);
 int		check_map_chars(t_game *game, char *line, int y);
+int		border_erro(char *str1, int x, char *str2, int y);
 
 // gameplay
 void	start_game(t_game *game);

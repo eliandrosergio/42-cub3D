@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elian <elian@student.42.fr>                +#+  +:+       +#+        */
+/*   By: efaustin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:47:54 by efaustin          #+#    #+#             */
-/*   Updated: 2025/03/26 14:42:11 by elian            ###   ########.fr       */
+/*   Updated: 2025/04/03 13:38:05 by efaustin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	define_player_position(t_game *game, int y, int x, char dir)
 		define_player_help(game, dir);
 	game->player.pos_y = (double)(y + 0.5);
 	game->player.pos_x = (double)(x + 0.5);
-	game->map.grid[y][x] = '0';
+	game->map.grid[y][x] = dir;
 	game->player.dir = 1;
 	return (0);
 }
