@@ -57,7 +57,8 @@ static int	check_texture(t_game *game, char *line, char dir)
 	if (!temp)
 		return (return_erro("Falha ao alocar memória da textura\n", 0, 0, 0));
 	if (temp[1] == ' ' || temp[1] == '\t')
-		return (return_erro("Espaço ou tab após o Indentificador\n", 0, 0, temp));
+		return (return_erro("Espaço ou tab após o Indentificador\n",
+				0, 0, temp));
 	line = trim_spaces(temp, " ");
 	if (!line)
 		return (return_erro("Falha ao alocar memória da textura\n", 0, 0, 0));
@@ -83,13 +84,14 @@ static int	check_color(t_game *game, char *line, char c)
 	if (!temp)
 		return (return_erro("Falha ao alocar memória da cor\n", 0, 0, 0));
 	if (temp[1] == ' ' || temp[1] == '\t')
-		return (return_erro("Espaço ou tab após o Indentificador\n", 0, 0, temp));
+		return (return_erro("Espaço ou tab após o Indentificador\n",
+				0, 0, temp));
 	line = trim_spaces(temp, " ");
 	if (!line)
 		return (return_erro("Falha ao alocar memória da cor\n", 0, 0, 0));
 	if (check_clr_line(line))
 		return (return_erro("A linha da cor só deve ter 3 números "
-			"separados por 2 vírgulas sem espaços\n", 0, 0, line));
+				"separados por 2 vírgulas sem espaços\n", 0, 0, line));
 	color = rgb_to_hex(line);
 	free(line);
 	if (color == -1)

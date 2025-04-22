@@ -18,16 +18,16 @@
 # include <math.h>
 # include <string.h>
 
-# define WIDTH 800
-# define HEIGHT 640
+# define WIDTH 1280
+# define HEIGHT 720
 # define TITLE "cub3D"
 
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
 # define NUM_SPRITES 3
 # define MAX_SPRITES 64
-# define SPEED_MOVE 0.008
-# define SPEED_CAMERA 0.006
+# define SPEED_MOVE 0.015
+# define SPEED_CAMERA 0.01
 
 # define KEY_ESQ 65307
 # define KEY_W 119

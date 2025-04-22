@@ -35,9 +35,10 @@ static int	get_assets(t_game *game, int *fd, int *i)
 	while (*i < game->map.height_file)
 	{
 		line = get_next_line(*fd, 0);
-		if ((line && *i == 0) && (line[*i] == '\0' || line[*i] == '\n'))
+		if ((line && *i == 0) && (line[*i] == '\0' || line[*i] == '\n'
+				|| is_only_spaces(line)))
 			return (return_erro("O arquivo .cub não deve iniciar com"
-					" linhas vazias ou somente com espaços\n", 0, 0, 0));
+					" linhas vazias ou somente com espaços\n", 0, 0, line));
 		line = trim_spaces(line, " \n");
 		if (line)
 			status = check_param_lines(game, line);
@@ -52,31 +53,42 @@ static int	get_assets(t_game *game, int *fd, int *i)
 	return (status);
 }
 
+static int	get_map_helper(char **oldline, char **line, int *status)
+{
+	*oldline = ft_strdup(*line);
+	*line = trim_spaces(*line, " \n");
+	if (*line)
+		*status = check_map_lines(*line);
+	if (*status != 2)
+	{
+		free(*oldline);
+		return (1);
+	}
+	return (0);
+}
+
 static int	get_map(t_game *game, int *fd, int *i)
 {
 	int		status;
 	char	*line;
+	char	*oldline;
 
 	status = 0;
 	line = NULL;
+	oldline = NULL;
 	while (*i < game->map.height_file)
 	{
 		line = get_next_line(*fd, 0);
-		line = trim_spaces(line, " \n");
-		if (line)
-			status = check_map_lines(line);
-		if (status != 2)
-		{
-			free(line);
+		if (get_map_helper(&oldline, &line, &status))
 			(*i)++;
-		}
+		free(line);
 		if (status != 0)
 			break ;
 	}
 	if (status == 0)
 		return (return_erro("Mapa não encontrado\n", 0, 0, 0));
 	else if (status == 2)
-		status = fill_map(game, line, fd, i);
+		status = fill_map(game, oldline, fd, i);
 	return (status);
 }
 

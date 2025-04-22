@@ -59,6 +59,27 @@ static int	define_player_position(t_game *game, int y, int x, char dir)
 	return (0);
 }
 
+static int	check_map_helper(t_game *game, char *line, int y, int x)
+{
+	if (line[x] == 'N' || line[x] == 'S'
+		|| line[x] == 'E' || line[x] == 'W')
+	{
+		if (define_player_position(game, y, x, line[x]))
+			return (1);
+	}
+	else if (line[x] >= '0' && line[x] <= '9')
+	{
+		if (line[x] >= '2' && (line[x] > ('0' + NUM_SPRITES + 1)))
+			return (return_erro("ID de Sprite inválido no mapa\n", 0, 0, 0));
+		game->map.grid[y][x] = line[x];
+	}
+	else if (line[x] == ' ')
+		game->map.grid[y][x] = 'V';
+	else if (line[x] != '\n')
+		return (return_erro("Caractere inválido no mapa\n", 0, 0, 0));
+	return (0);
+}
+
 int	check_map_chars(t_game *game, char *line, int y)
 {
 	int		x;
@@ -66,18 +87,8 @@ int	check_map_chars(t_game *game, char *line, int y)
 	x = 0;
 	while (line[x])
 	{
-		if (line[x] == 'N' || line[x] == 'S'
-			|| line[x] == 'E' || line[x] == 'W')
-		{
-			if (define_player_position(game, y, x, line[x]))
-				return (1);
-		}
-		else if (line[x] >= '0' && line[x] <= '9')
-			game->map.grid[y][x] = line[x];
-		else if (line[x] == ' ')
-			game->map.grid[y][x] = 'V';
-		else if (line[x] != '\n')
-			return (return_erro("Caractere inválido no mapa\n", 0, 0, 0));
+		if (check_map_helper(game, line, y, x))
+			return (1);
 		x++;
 	}
 	while (x < game->map.width)

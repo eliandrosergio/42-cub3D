@@ -1,10 +1,11 @@
-NO ./assets/greystone.xpm
-SO ./assets/purplestone.xpm
-WE ./assets/redbrick.xpm
-EA ./assets/bluestone.xpm
+NO ./assets/wolfenstein/grey_stone.xpm
+SO ./assets/wolfenstein/purple_stone.xpm
+WE ./assets/wolfenstein/red_brick.xpm
+EA ./assets/wolfenstein/blue_stone.xpm
 
 F 220,100,0
 C 225,30,0
+
 
         1111111111111111111111111
         1000000000110000000000001

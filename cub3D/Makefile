@@ -112,3 +112,5 @@ bonus: $(MLX) $(LIBFT) $(OBJ_FILES_BONUS)
 	$(CC) $(CFLAGS) $(OBJ_FILES_BONUS) -o $(NAME_BONUS) $(INC) $(LIBFT) $(MLX) $(MLXFLAGS)
 
 re: fclean all
+
+.PHONY: all clean fclean re

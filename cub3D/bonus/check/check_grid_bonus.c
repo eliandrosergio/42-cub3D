@@ -15,19 +15,19 @@
 static int	check_player_border(t_map *map, int y, int x, int last_line)
 {
 	if (y != 0)
-		if (map->grid[y - 1][x] != '1' && map->grid[y - 1][x] != '0')
+		if (map->grid[y - 1][x] == 'V')
 			return (border_erro("Borda superior inválida do caractere ",
 					x, " da linha ", y));
 	if (y != last_line)
-		if (map->grid[y + 1][x] != '1' && map->grid[y + 1][x] != '0')
+		if (map->grid[y + 1][x] == 'V')
 			return (border_erro("Borda inferior inválida do caractere ",
 					x, " da linha ", y));
 	if ((x - 1) >= 0)
-		if (map->grid[y][x - 1] != '1' && map->grid[y][x - 1] != '0')
+		if (map->grid[y][x - 1] == 'V')
 			return (border_erro("Borda esquerda inválida do caractere ",
 					x, " da linha ", y));
 	if ((x + 1) < map->height)
-		if (map->grid[y][x + 1] != '1' && map->grid[y][x + 1] != '0')
+		if (map->grid[y][x + 1] == 'V')
 			return (border_erro("Borda direita inválida do caractere ",
 					x, " da linha ", y));
 	return (0);
