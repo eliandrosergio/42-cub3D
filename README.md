@@ -1,4 +1,4 @@
-# cub3D
+# 42-cub3D
 
 **cub3D** é um projeto desenvolvido em C que carrega e interpreta arquivos de mapa no formato `.cub`. Este é um passo fundamental para a construção de um jogo inspirado no clássico Wolfenstein 3D.
 
